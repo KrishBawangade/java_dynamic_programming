@@ -1,0 +1,45 @@
+package house_robber_2;
+
+import java.util.*;
+
+public class HouseRobber2Tabulation {
+
+    public static int robLinear(int[] nums){
+        int[] dp = new int[nums.length];
+
+        dp[0] = nums[0];
+
+        for(int i=1; i<nums.length; i++){
+
+            int pick;
+
+            if(i>1){
+                pick = nums[i] + dp[i-2];
+            }else{
+                pick = nums[i];
+            }
+
+            int nonpick = dp[i-1];
+
+            dp[i] = Math.max(pick, nonpick);
+        }
+
+        return dp[nums.length-1];
+    }
+
+    public static void main(String[] args){
+        int[] nums = {1,2,3,1};
+
+        if(nums.length == 1){
+            System.out.println(nums[0]);
+            return;
+        }
+
+        int ans1 = robLinear(Arrays.copyOfRange(nums, 0, nums.length-1));
+        int ans2 = robLinear(Arrays.copyOfRange(nums, 1, nums.length));
+
+        int max = Math.max(ans1, ans2);
+
+        System.out.println(max);
+    } 
+}
