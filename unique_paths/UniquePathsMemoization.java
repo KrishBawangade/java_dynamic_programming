@@ -13,18 +13,18 @@ public class UniquePathsMemoization {
             return dp[m][n];
         }
 
-        int down= 0;
-        int right = 0;
+        int up= 0;
+        int left = 0;
 
         if(m>1){
-            down = uniquePaths(dp, m-1, n); 
+            up = uniquePaths(dp, m-1, n); 
         }
 
         if(n>1){
-            right = uniquePaths(dp, m, n-1); 
+            left = uniquePaths(dp, m, n-1); 
         }
 
-        return dp[m][n] = down+right;
+        return dp[m][n] = up+left;
     }
 
     public static void main(String[] args){
