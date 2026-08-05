@@ -26,7 +26,7 @@ public class PrintLIS{
                 }
             }
 
-            if(dp[i] > dp[maxi]){
+            if(dp[i] > maxi){
                 maxi = dp[i];
                 lastIndex = i;
             }
